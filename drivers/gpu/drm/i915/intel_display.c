@@ -13905,7 +13905,7 @@ u32 intel_fb_pitch_limit(struct drm_i915_private *dev_priv,
 		/* "The stride in bytes must not exceed the of the size of 8K
 		 *  pixels and 32K bytes."
 		 */
-		return min(8192 * cpp, 32768);
+		return min(16384 * cpp, 65536);
 	} else if (gen >= 5 && !HAS_GMCH_DISPLAY(dev_priv)) {
 		return 32*1024;
 	} else if (gen >= 4) {
@@ -14604,8 +14604,8 @@ int intel_modeset_init(struct drm_device *dev)
 		dev->mode_config.max_width = 4096;
 		dev->mode_config.max_height = 4096;
 	} else {
-		dev->mode_config.max_width = 8192;
-		dev->mode_config.max_height = 8192;
+		dev->mode_config.max_width = 16384;
+		dev->mode_config.max_height = 16384;
 	}
 
 	if (IS_I845G(dev_priv) || IS_I865G(dev_priv)) {
